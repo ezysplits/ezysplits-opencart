@@ -1,0 +1,142 @@
+.ezysplits_icon img {
+    width: 30px;
+    height: 30px;
+}
+.ezysplits-pay-later-widget-header {
+    position: relative;
+    display: flex;
+    align-items: center;
+    margin-left: 5%;
+}
+.ezysplits-pay-later-column-title {
+    width: 47%;
+    padding: 0 15px;
+    font-weight: 600;
+    font-size: 15px;
+    align-items: center;
+    white-space: nowrap;
+    position: relative;
+    border: 2px solid #183f72;
+    height: 38px;
+    cursor: pointer;
+    box-sizing: border-box;
+    opacity: unset;
+    text-align: center;
+    display: inline-flex;
+    justify-content: center;
+}
+.ezysplits-three {
+    border-radius: 8px 0 0 8px;
+    background-color: #183f72;
+    color: #fff;
+}
+.ezysplits-four {
+    border-radius: 0 8px 8px 0;
+    color: #000;
+}
+.outer-price-details {
+    background-color: #eaf3ff;
+    padding: 15px;
+    border-radius: 8px;
+    margin: 15px 0;
+}
+.ezysplits-pay-later-column-list{
+    display: flex;
+}
+.ezysplits-pay-later-column.four-instalments {
+    justify-content: space-between;
+}
+.ezysplits-pay-later-column {
+    padding: 10px 20px;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+}
+.ezysplits-pay-later-column .item-name {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #183f72;
+    padding-bottom: 2px;
+}
+.ezysplits-pay-later-column .item-name h3 {
+    font-weight: 600;
+    color: #1c1c1c;
+}
+.ezysplits-pay-later-column .item-name span {
+    text-align: right;
+    font-weight: 600;
+    font-size: 15px;
+    position: relative;
+    top: 9px;
+}
+.StepProgress {
+    position: relative;
+    padding-left: 38px;
+    list-style: none;
+    margin: 25px 0 0;
+    display: inline-block;
+    width: 85%;
+}
+.StepProgress-item {
+    padding-bottom: 10px;
+    position: relative;
+    counter-increment: list;
+    margin-bottom: 0rem;
+}
+.shipping-item-name {
+    display: flex;
+    justify-content: space-between;
+    padding: 2px 0;
+    margin-top: 0;
+}
+.shipping-item-name h3 {
+    font-size: 14px;
+    color: #1c1c1c;
+    position: relative;
+    left: -8px;
+    margin: 0 0 !important;
+}
+.shipping-item-name span {
+    text-align: right;
+    font-weight: 600;
+    position: relative;
+}
+.StepProgress-item::before {
+    display: inline-block;
+    content: "";
+    position: absolute;
+    left: -33px;
+    height: 100%;
+    width: 10px;
+}
+.StepProgress-item::after {
+    font-size: 10px;
+    color: #fff;
+    text-align: center;
+    border: 3px solid #b4b4b4;
+    background-color: #fff;
+    content: "";
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: -37px;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+}
+.StepProgress::before {
+    display: inline-block;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 5px;
+    width: 10px;
+    height: 77%;
+    border-left: 3px solid #b4b4b4;
+}
+.is-done::before {
+    border-left: 3px solid #183f72;
+}
+.is-done::after {
+    border: 3px solid #183f72;
+}
