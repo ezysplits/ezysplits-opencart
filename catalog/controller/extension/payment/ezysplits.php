@@ -71,10 +71,10 @@ class ControllerExtensionPaymentEzysplits extends Controller
     {
         $payment_mode = trim($this->config->get('payment_ezysplits_payment_mode'));
         if($payment_mode == "sandbox"){
-            $endpoint = "http://test-api.ezysplits.com/api/v1/checkouts";
+            $endpoint = "https://test-api.ezysplits.com/api/v1/checkouts";
         } else {
             //This need to update after prod env release
-            $endpoint = "http://test-api.ezysplits.com/api/v1/checkouts";
+            $endpoint = "https://api.ezysplits.com/api/v1/checkouts";
         }
         $curlPostfield = json_encode($getRequestData);
 
