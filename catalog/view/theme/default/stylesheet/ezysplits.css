@@ -1,142 +1,108 @@
-.ezysplits_icon img {
-    width: 30px;
-    height: 30px;
+.payment_box {
+    padding: 1rem;
+    background: #eee;
+    color: var(--global--color-dark-gray);
+}
+.ezysplits-pay-later-widget {
+    display: block!important;
+    position: relative!important;
+    background: #fff!important;
 }
 .ezysplits-pay-later-widget-header {
     position: relative;
-    display: flex;
-    align-items: center;
-    margin-left: 5%;
+    display: flex!important;
+    align-items: center!important;
+    padding-top: 8px!important;
 }
 .ezysplits-pay-later-column-title {
-    width: 47%;
-    padding: 0 15px;
-    font-weight: 600;
-    font-size: 15px;
-    align-items: center;
-    white-space: nowrap;
-    position: relative;
-    border: 2px solid #183f72;
-    height: 38px;
-    cursor: pointer;
-    box-sizing: border-box;
-    opacity: unset;
-    text-align: center;
-    display: inline-flex;
-    justify-content: center;
+    text-align: center!important;
+    flex-grow: 1!important;
 }
-.ezysplits-three {
-    border-radius: 8px 0 0 8px;
-    background-color: #183f72;
-    color: #fff;
+.ezysplits-pay-later-column-separator, .ezysplits-pay-later-column-title {
+    font-family: var(--font-bold);
+    font-size: 16px!important;
+    color: #6d6e71!important;
+    padding-bottom: 7px!important;
+    font-weight: bold;
 }
-.ezysplits-four {
-    border-radius: 0 8px 8px 0;
-    color: #000;
+.ezysplits-pay-later-column-separator {
+    z-index: 10!important;
+    background: #fff!important;
+    position: absolute;
+    left: 50%;
+    top: 9px;
+    transform: translate(-50%);
 }
-.outer-price-details {
-    background-color: #eaf3ff;
-    padding: 15px;
-    border-radius: 8px;
-    margin: 15px 0;
-}
-.ezysplits-pay-later-column-list{
-    display: flex;
+.ezysplits-pay-later-column-list {
+    display: flex!important;
 }
 .ezysplits-pay-later-column.four-instalments {
-    justify-content: space-between;
+    justify-content: space-between!important;
 }
 .ezysplits-pay-later-column {
-    padding: 10px 20px;
-    width: 50%;
+    padding: 10px 20px!important;
+    width: 50%!important;
     display: flex;
     flex-direction: column;
 }
-.ezysplits-pay-later-column .item-name {
-    display: flex;
-    justify-content: space-between;
-    border-bottom: 1px solid #183f72;
-    padding-bottom: 2px;
+.ezysplits-pay-later-column.four-instalments .ezysplits-pay-later-item {
+    flex-grow: 1!important;
+    padding-bottom: 0!important;
+    min-height: 69px!important;
 }
-.ezysplits-pay-later-column .item-name h3 {
-    font-weight: 600;
-    color: #1c1c1c;
+.ezysplits-pay-later-item {
+    display: flex!important;
+    padding-bottom: 20px!important;
+    position: relative!important;
 }
-.ezysplits-pay-later-column .item-name span {
-    text-align: right;
-    font-weight: 600;
-    font-size: 15px;
-    position: relative;
-    top: 9px;
+.ezysplits-pay-later-item:last-child {
+    padding-bottom: 0!important;
 }
-.StepProgress {
-    position: relative;
-    padding-left: 38px;
-    list-style: none;
-    margin: 25px 0 0;
-    display: inline-block;
-    width: 85%;
+.ezysplits-pay-later-notice {
+    position: relative!important;
+    background-color: #949799!important;
+    color: #fff!important;
+    text-align: center!important;
+    padding: 7px 0!important;
+    z-index: 10!important;
+    font-family: var(--font-bold);
+    font-size: 1em!important;
 }
-.StepProgress-item {
-    padding-bottom: 10px;
-    position: relative;
-    counter-increment: list;
-    margin-bottom: 0rem;
+.ezysplits-pay-later-item-content {
+    display: flex!important;
+    align-items: flex-start!important;
 }
-.shipping-item-name {
-    display: flex;
-    justify-content: space-between;
-    padding: 2px 0;
-    margin-top: 0;
+.ezysplits-pay-later-item-image-wrapper {
+    display: flex!important;
+    align-items: center!important;
+    position: relative!important;
 }
-.shipping-item-name h3 {
-    font-size: 14px;
-    color: #1c1c1c;
-    position: relative;
-    left: -8px;
-    margin: 0 0 !important;
+.ezysplits-pay-later-item-image {
+    position: relative!important;
+    width: 36px!important;
+    height: 36px!important;
+    max-width: 36px!important;
+    max-height: 36px!important;
+    min-width: 36px!important;
+    min-height: 36px!important;
+    margin: 0 15px 0 0!important;
+    z-index: 10!important;
+    float: none!important;
+    background: #fff!important;
+    padding: 0!important;
 }
-.shipping-item-name span {
-    text-align: right;
-    font-weight: 600;
-    position: relative;
+.ezysplits-pay-later-item-description {
+    font-family: var(--font-light);
+    font-size: 14px!important;
+    color: #727376!important;
 }
-.StepProgress-item::before {
-    display: inline-block;
-    content: "";
-    position: absolute;
-    left: -33px;
-    height: 100%;
-    width: 10px;
+.ezysplits-product-price-wrapper {
+    display: inline-flex!important;
+    direction: ltr!important;
 }
-.StepProgress-item::after {
-    font-size: 10px;
-    color: #fff;
-    text-align: center;
-    border: 3px solid #b4b4b4;
-    background-color: #fff;
-    content: "";
-    display: inline-block;
-    position: absolute;
-    top: 0;
-    left: -37px;
-    width: 11px;
-    height: 11px;
-    border-radius: 50%;
+.ezysplits-pay-later-item-currency {
+    text-transform: uppercase!important;
 }
-.StepProgress::before {
-    display: inline-block;
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 5px;
-    width: 10px;
-    height: 77%;
-    border-left: 3px solid #b4b4b4;
-}
-.is-done::before {
-    border-left: 3px solid #183f72;
-}
-.is-done::after {
-    border: 3px solid #183f72;
+.ezysplits-product-price {
+    font-family: var(--font-medium)!important;
 }
