@@ -6,7 +6,6 @@ This extension utilizes Ezyspilits API and provides seamless integration with Op
 
 Copy all files/folders recursively to opencart installation directory.
 
-Install vqmod by running "www.yourstore.com/vqmod/install" in your browser('www.yourstore.com' should be your store domain name).
 
 Go to Admin Panel, Extensions->Payments and install the Ezyspilits extension.
 
@@ -21,4 +20,5 @@ Save the plugin settings
 
 ### Development
 
-- The `master` branch holds the plugin for OpenCart 3
+- The [`master`](https://github.com/ezysplits/ezysplits-opencart) branch holds the plugin for OpenCart 3
+- The [`opencart-2x`](https://github.com/ezysplits/ezysplits-opencart/tree/opencart-2x) branch holds the plugin for OpenCart 2
