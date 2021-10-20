@@ -21,4 +21,5 @@ Save the plugin settings
 
 ### Development
 
-- The `master` branch holds the plugin for OpenCart 3
+- The [`master`](https://github.com/ezysplits/ezysplits-opencart) branch holds the plugin for OpenCart 3
+- The [`opencart-2x`](https://github.com/ezysplits/ezysplits-opencart/tree/opencart-2x) branch holds the plugin for OpenCart 2
