@@ -1,29 +1,29 @@
 <?php
-class ControllerPaymentEzysplits extends Controller {
+
+class ControllerPaymentEzysplits extends Controller
+{
 
     /**
      * @return mixed
      */
-    public function index() {
-		$this->load->model('checkout/order');
+    public function index()
+    {
+        $this->load->model('checkout/order');
         $order_info = $this->model_checkout_order->getOrder($this->session->data['order_id']);
         $this->language->load('payment/ezysplits');
         $data['button_confirm'] = $this->language->get('button_confirm');
         $data['text_loading'] = $this->language->get('text_loading');
         $data['text_redirect'] = $this->language->get('text_redirect');
-        $data['installment_three'] = number_format((float)$order_info['total']/3, 2, '.', '');
-        $data['installment_four'] = number_format((float)$order_info['total']/4, 2, '.', '');
-        if (file_exists(DIR_TEMPLATE.$this->config->get('config_template').'/template/payment/ezysplits.tpl')) 
-        {
-            return $this->load->view($this->config->get('config_template').'/template/payment/ezysplits.tpl', $data);
-        } 
-        else 
-        {
+        $data['installment_three'] = number_format((float)$order_info['total'] / 3, 2, '.', '');
+        $data['installment_four'] = number_format((float)$order_info['total'] / 4, 2, '.', '');
+        if (file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/payment/ezysplits.tpl')) {
+            return $this->load->view($this->config->get('config_template') . '/template/payment/ezysplits.tpl', $data);
+        } else {
             return $this->load->view('payment/ezysplits.tpl', $data);
         }
-	}
+    }
 
-	/**
+    /**
      * Redirect to payment page for executing checkout page
      *
      * @return void
@@ -66,7 +66,7 @@ class ControllerPaymentEzysplits extends Controller {
     public function createOrder($appId, $secretKey, $getRequestData)
     {
         $payment_mode = trim($this->config->get('ezysplits_payment_mode'));
-        if($payment_mode == "sandbox"){
+        if ($payment_mode == "sandbox") {
             $endpoint = "https://test-api.ezysplits.com/api/v1/checkouts";
         } else {
             $endpoint = "https://api.ezysplits.com/api/v1/checkouts";
@@ -86,8 +86,8 @@ class ControllerPaymentEzysplits extends Controller {
             CURLOPT_CUSTOMREQUEST => 'POST',
             CURLOPT_POSTFIELDS => $curlPostfield,
             CURLOPT_HTTPHEADER => array(
-                'x-client-id: '.$appId,
-                'x-client-secret: '.$secretKey,
+                'x-client-id: ' . $appId,
+                'x-client-secret: ' . $secretKey,
                 'Content-Type: application/json'
             ),
         ));
@@ -104,19 +104,19 @@ class ControllerPaymentEzysplits extends Controller {
     public function createCheckoutRequest($order)
     {
         $data = array(
-            'order_id'        => $this->session->data['order_id'] . '-' . uniqid(),
-            'order_amount'    => number_format((float)$order['total'], 2, '.', ''),
-            'order_currency'  => $order['currency_code'],
-            'order_note'      => "Opencart",
-            'order_source'      => "Opencart",
+            'order_id' => $this->session->data['order_id'] . '-' . uniqid(),
+            'order_amount' => number_format((float)$order['total'], 2, '.', ''),
+            'order_currency' => $order['currency_code'],
+            'order_note' => "Opencart",
+            'order_source' => "Opencart",
             'customer_details' => $this->getCustomerDetail($order),
             'billing_address' => $this->getRequestAddress($order),
             'shippingAddress' => $this->getRequestAddress($order),
-            'checkout_items'           => $this->getCheckoutItem($order),
-            'order_meta'        => array(
+            'checkout_items' => $this->getCheckoutItem($order),
+            'order_meta' => array(
                 'redirect_url' => $this->url->link('payment/ezysplits/thankyou', '', 'SSL'),
                 'notify_url' => $this->url->link('payment/ezysplits/callback', '', 'SSL'),
-                'cancel_url'       => $this->url->link('payment/ezysplits/cancelled', '', 'SSL'),
+                'cancel_url' => $this->url->link('payment/ezysplits/cancelled', '', 'SSL'),
             ),
         );
 
@@ -125,27 +125,27 @@ class ControllerPaymentEzysplits extends Controller {
 
     private function getCustomerDetail($order)
     {
-        if($order['customer_id'] == 0) {
+        if ($order['customer_id'] == 0) {
             return array(
-                'customer_id' 	=> "opencart_guest",
-                'customer_name'	=> $order['firstname']." ".$order['lastname'],
-                'email'      	=> $order['email'],
-                'country_code'	=> $order['payment_iso_code_2'],
-                'dob'      		=> "",
-                'address1'      => $order['payment_iso_code_2'],
-                'address2'      => $order['payment_iso_code_2'],
-                'postal_code'  	=> $order['payment_iso_code_2'],
+                'customer_id' => "opencart_guest",
+                'customer_name' => $order['firstname'] . " " . $order['lastname'],
+                'email' => $order['email'],
+                'country_code' => $order['payment_iso_code_2'],
+                'dob' => "",
+                'address1' => $order['payment_iso_code_2'],
+                'address2' => $order['payment_iso_code_2'],
+                'postal_code' => $order['payment_iso_code_2'],
             );
         } else {
             return array(
-                'customer_id' 	=> "opencart_guest",
-                'customer_name'	=> $order['firstname']." ".$order['lastname'],
-                'email'      	=> $order['email'],
-                'country_code'	=> $order['payment_iso_code_2'],
-                'dob'      		=> "",
-                'address1'      => $order['payment_iso_code_2'],
-                'address2'      => $order['payment_iso_code_2'],
-                'postal_code'  	=> $order['payment_iso_code_2'],
+                'customer_id' => "opencart_guest",
+                'customer_name' => $order['firstname'] . " " . $order['lastname'],
+                'email' => $order['email'],
+                'country_code' => $order['payment_iso_code_2'],
+                'dob' => "",
+                'address1' => $order['payment_iso_code_2'],
+                'address2' => $order['payment_iso_code_2'],
+                'postal_code' => $order['payment_iso_code_2'],
             );
         }
     }
@@ -153,13 +153,13 @@ class ControllerPaymentEzysplits extends Controller {
     private function getRequestAddress($order)
     {
         return array(
-            'name'  => $order['firstname']." ".$order['lastname'],
-            'street1'       => $order['payment_address_1'],
-            'street2'       => $order['payment_address_2'],
-            'city'        => $order['payment_city'],
-            'state'       => $order['payment_zone'],
-            'country_code'     => "+91",
-            'phone'       => $order['telephone'],
+            'name' => $order['firstname'] . " " . $order['lastname'],
+            'street1' => $order['payment_address_1'],
+            'street2' => $order['payment_address_2'],
+            'city' => $order['payment_city'],
+            'state' => $order['payment_zone'],
+            'country_code' => "+91",
+            'phone' => $order['telephone'],
             'postal_code' => $order['payment_postcode'],
         );
     }
@@ -169,17 +169,17 @@ class ControllerPaymentEzysplits extends Controller {
         $this->load->model('account/order');
         $products = $this->model_account_order->getOrderProducts($order['order_id']);
         $items = array_map(
-            function( $item ) use ( $order ) {
+            function ($item) use ($order) {
                 return array(
-                    'item_id'   => $item['product_id'],
-                    'name'        => $item['name'],
+                    'item_id' => $item['product_id'],
+                    'name' => $item['name'],
                     'desc' => "",
-                    'image_url'   => "",
-                    'unit_price'  => $item['price'],
-                    'qty'         => $item['quantity'],
+                    'image_url' => "",
+                    'unit_price' => $item['price'],
+                    'qty' => $item['quantity'],
                 );
             },
-            array_values( $products )
+            array_values($products)
         );
 
         return $items;
@@ -195,7 +195,7 @@ class ControllerPaymentEzysplits extends Controller {
     {
         $this->load->model('checkout/order');
         $this->language->load('payment/ezysplits');
-        $order_id = explode( '-', $postData['order_id'] )[0];
+        $order_id = explode('-', $postData['order_id'])[0];
         $order_info = $this->model_checkout_order->getOrder($order_id);
 
         $secretKey = trim($this->config->get('ezysplits_merchant_secret_key'));
@@ -210,14 +210,14 @@ class ControllerPaymentEzysplits extends Controller {
             ksort($ezysplits_response);
 
             $signatureData = "";
-            foreach ($ezysplits_response as $key => $value){
-                $signatureData .= $key.$value;
+            foreach ($ezysplits_response as $key => $value) {
+                $signatureData .= $key . $value;
             }
 
-            $hash_hmac = hash_hmac('sha256', $signatureData, $secretKey, true) ;
+            $hash_hmac = hash_hmac('sha256', $signatureData, $secretKey, true);
             $computedSignature = base64_encode($hash_hmac);
             if ($postData["signature"] != $computedSignature) {
-                $this->model_checkout_order->addOrderHistory($ezysplits_response['order_id'], 10, $postData["message"] . ' Signature missmatch! Check Ezysplits dashboard for details of Reference Id:' . $postData['reference_id']);
+                $this->model_checkout_order->addOrderHistory($ezysplits_response['order_id'], 10, 'Signature missmatch! Check Ezysplits dashboard for details of Reference Id:' . $postData['reference_id']);
                 $redirectUrl = $this->url->link('checkout/failure', '', true);
                 return array("status" => 0, "message" => $this->language->get('error_signature_mismatch'), "redirectUrl" => $redirectUrl);
             }
@@ -229,15 +229,14 @@ class ControllerPaymentEzysplits extends Controller {
                 }
                 return array("status" => 1);
             } else if ($ezysplits_response["transaction_status"] == "CANCELLED") {
-                $this->model_checkout_order->addOrderHistory($ezysplits_response['order_id'], 7, $postData["message"] . ' Payment Cancelled! Check Ezysplits dashboard for details of Reference Id:' . $ezysplits_response['reference_id']);
+                $this->model_checkout_order->addOrderHistory($ezysplits_response['order_id'], 7, 'Payment Cancelled! Check Ezysplits dashboard for details of Reference Id:' . $ezysplits_response['reference_id']);
                 $redirectUrl = $this->url->link('checkout/checkout', '', true);
                 return array("status" => 0, "message" => $this->language->get('ezysplits_payment_cancelled'), "redirectUrl" => $redirectUrl);
             } else {
-                $this->model_checkout_order->addOrderHistory($ezysplits_response['orderId'], 10, $postData["message"] . ' Payment Failed! Check Ezysplits dashboard for details of Reference Id:' . $ezysplits_response['reference_id']);
+                $this->model_checkout_order->addOrderHistory($ezysplits_response['order_id'], 10, 'Payment Failed! Check Ezysplits dashboard for details of Reference Id:' . $ezysplits_response['reference_id']);
                 $redirectUrl = $this->url->link('checkout/failure', '', true);
                 return array("status" => 0, "message" => $this->language->get('ezysplits_payment_failed'), "redirectUrl" => $redirectUrl);
             }
-
         }
         return array("status" => 0, "message" => "");
     }
